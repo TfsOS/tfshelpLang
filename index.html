@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFSLang Help Center</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .menu {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #111;
+            padding-top: 60px;
+            transition: 0.3s;
+        }
+        .menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+        }
+        .menu a:hover {
+            background-color: #575757;
+        }
+        .open-menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px;
+        }
+        .content {
+            margin-left: 0;
+            transition: margin-left 0.3s;
+            padding: 20px;
+        }
+        .container {
+            margin: 0;
+            padding: 20px;
+        }
+        .menu-btn {
+            padding: 5px 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .menu-btn:hover {
+            background-color: #e74c3c;
+        }
+        .hide-menu {
+            left: 0;
+        }
+        .show-menu {
+            margin-left: 250px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="open-menu-btn" onclick="toggleMenu()">&#9776;</span>
+        <h1> TFSLang HelpCenter</h1>
+    </header>
+
+    <div class="menu" id="sideMenu">
+        <button onclick="toggleMenu()" class="menu-btn">Close Menu</button>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('intro')">Introduction</a>
+        <a href="#" onclick="showPage('basics')">TFSLang Basics</a>
+        <a href="#" onclick="showPage('syntax')">Syntax and Structure</a>
+        <a href="#" onclick="showPage('printFunc')">Using the Print Function</a>
+        <a href="#" onclick="showPage('variables')">Working with Variables</a>
+        <a href="#" onclick="showPage('output')">Understanding Output</a>
+        <a href="#" onclick="showPage('conditions')">Conditional Statements</a>
+        <a href="#" onclick="showPage('loops')">Loops and Iterations</a>
+        <a href="#" onclick="showPage('functions')">Creating Functions</a>
+    </div>
+
+    <div class="content" id="mainContent">
+        <div class="container" id="home">
+            <h2>Welcome to the TFSLang Help Center</h2>
+            <p>This help center will guide you through everything you need to know about TFSLang, from the basics to more advanced features. Use the menu to navigate through the topics.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TFSLang Help Center</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sideMenu').classList.toggle('hide-menu');
+            document.getElementById('mainContent').classList.toggle('show-menu');
+        }
+
+        function showPage(page) {
+            let content = document.getElementById('mainContent');
+            if (page === 'home') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Welcome to the TFSLang Help Center</h2>
+                        <p>This help center will guide you through everything you need to know about TFSLang, from the basics to more advanced features. Use the menu to navigate through the topics.</p>
+                    </div>
+                `;
+            } else if (page === 'intro') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Introduction to TFSLang</h2>
+                        <p>TFSLang is a lightweight, custom programming language designed for simplicity and ease of use. It allows users to create programs with basic constructs such as variables, conditions, loops, and functions. This guide will help you get started and master the core features of the language.</p>
+                    </div>
+                `;
+            } else if (page === 'basics') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>TFSLang Basics</h2>
+                        <p>In TFSLang, every program starts with the keyword <code>.start</code> and ends with <code>.end</code>. Between these markers, you can include code to be executed, such as print statements, variable declarations, and more.</p>
+                        <pre><code>.start
+    print("Hello, TFSLang!");
+.end</code></pre>
+                        <p>This simple example demonstrates the core structure of a TFSLang program.</p>
+                    </div>
+                `;
+            } else if (page === 'syntax') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>TFSLang Syntax and Structure</h2>
+                        <p>The syntax of TFSLang is straightforward and human-readable. Commands like <code>print()</code> are used to display output, and variables are declared without needing explicit types.</p>
+                    </div>
+                `;
+            } else if (page === 'printFunc') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Using the Print Function</h2>
+                        <p>The <code>print()</code> function is used to display text or variables to the output. You can use it as follows:</p>
+                        <pre><code>print("This is output");
+print("Hello, World!");</code></pre>
+                    </div>
+                `;
+            } else if (page === 'variables') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Working with Variables</h2>
+                        <p>Variables in TFSLang are dynamically typed, meaning you do not need to declare a type. You can assign values to variables as follows:</p>
+                        <pre><code>var x = 5;
+var name = "John";</code></pre>
+                        <p>These variables can then be used in your code for calculations, output, and logic.</p>
+                    </div>
+                `;
+            } else if (page === 'output') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Understanding Output</h2>
+                        <p>When you use <code>print()</code> in TFSLang, the text is displayed on the console or output screen. Multiple print statements will output in sequence.</p>
+                    </div>
+                `;
+            } else if (page === 'conditions') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Conditional Statements</h2>
+                        <p>TFSLang supports conditional logic using <code>if</code> and <code>else</code>. Here is an example:</p>
+                        <pre><code>if (x > 10) {
+    print("x is greater than 10");
+} else {
+    print("x is 10 or less");
+}</code></pre>
+                    </div>
+                `;
+            } else if (page === 'loops') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Loops and Iterations</h2>
+                        <p>TFSLang supports looping constructs like <code>while</code> and <code>for</code> loops. You can use loops to repeat code multiple times:</p>
+                        <pre><code>for (var i = 0; i < 5; i++) {
+    print(i);
+}</code></pre>
+                    </div>
+                `;
+            } else if (page === 'functions') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Creating Functions</h2>
+                        <p>Functions in TFSLang allow you to create reusable blocks of code. You can define a function as follows:</p>
+                        <pre><code>function greet() {
+    print("Hello from the function!");
+}
+greet(); // Calls the function
+</code></pre>
+                        <p>This defines a function called <code>greet</code> that prints a message. The function is called by using its name followed by parentheses.</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+   
